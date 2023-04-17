@@ -2,7 +2,7 @@ pipeline
 {
 
 agent {
-  label 'DevServer'
+  label 'server1-Dev'
 }
 
 parameters {
@@ -69,7 +69,7 @@ stages{
     {
         when { expression {params.select_environment == 'dev'}
         beforeAgent true}
-        agent { label 'DevServer' }
+        agent { label 'server1-Dev' }
         steps
         {
             dir("/var/www/html")
@@ -87,7 +87,7 @@ stages{
     {
       when { expression {params.select_environment == 'prod'}
         beforeAgent true}
-        agent { label 'ProdServer' }
+        agent { label 'server2-Prod' }
         steps
         {
              timeout(time:5, unit:'DAYS'){
